@@ -1,0 +1,232 @@
+/* =========================
+   custom-user_table.css (final - jastiper width fixed)
+   ========================= */
+
+/* Container */
+.user-table-card {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 18px;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table base */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;   /* kontrol kolom agar tidak melebar */
+  font-size: 14px;
+}
+
+/* Header */
+.table-custom thead th {
+  background: #e7f1ff;
+  color: #18405C;
+  font-weight: 700;
+  padding: 12px 14px;
+  text-align: left;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.table-custom thead tr th:first-child  { border-top-left-radius: 8px;  }
+.table-custom thead tr th:last-child   { border-top-right-radius: 8px; }
+
+/* Body rows */
+.table-custom tbody tr {
+  background: #ffffff;
+  border-bottom: 1px solid #eef2f7;
+  transition: background .12s ease;
+}
+.table-custom tbody tr:hover { background: #f6fbff; }
+
+/* Default cells = single line (supaya tidak mendorong kolom lain) */
+.table-custom td {
+  padding: 10px 12px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.35;
+}
+
+/* Thumbnail Produk */
+.prod-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+
+/* Produk: allow wrapping but limited width */
+.nama-barang-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  white-space: normal;
+  max-width: 200px;
+  overflow-wrap: anywhere;
+}
+
+/* Jastiper: SANGAT KOMPAK (tidak mendorong kolom lain) */
+.jastiper-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;   /* <── KUNCI UTAMA */
+}
+
+/* Harga */
+.price-cell {
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Action column */
+.table-custom th.col-actions,
+.table-custom td.col-actions {
+  white-space: nowrap;
+  overflow: visible;
+  text-align: right;
+  min-width: 110px;
+}
+
+.table-actions { 
+  display: inline-flex; 
+  gap: 8px; 
+  align-items: center; 
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+}
+.btn-action img { width: 16px; }
+
+/* Column widths (ID | Foto | Produk | Jastiper | Status | Admin | Tanggal | Operasi ) */
+/* =========================
+   AUTO COLUMN WIDTH VERSION
+   ========================= */
+
+/* Table base */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;     /* <── AUTO WIDTH */
+  font-size: 14px;
+}
+
+/* Header */
+.table-custom thead th {
+  background: #e7f1ff;
+  color: #18405C;
+  font-weight: 700;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Body rows */
+.table-custom tbody tr {
+  background: #fff;
+  border-bottom: 1px solid #eef2f7;
+}
+.table-custom tbody tr:hover { background: #f6fbff; }
+
+/* Default cell */
+.table-custom td {
+  padding: 10px 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   FIX SPECIFIC COLUMN BEHAVIOR
+   ========================= */
+
+/* ID column: always small */
+.table-custom td:first-child,
+.table-custom th:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Foto column: keep fixed */
+.table-custom td:nth-child(2),
+.table-custom th:nth-child(2) {
+  white-space: nowrap;
+}
+
+.prod-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+/* PRODUK column: allow wrapping but keep tight */
+.nama-barang-cell {
+  display: flex;
+  gap: 8px;
+  white-space: normal;
+  max-width: 200px;
+  overflow-wrap: anywhere;
+}
+
+/* JASTIPER column: auto shrink */
+.jastiper-cell {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* STATUS / ADMIN / TANGGAL → auto size */
+.table-custom td:nth-child(5),
+.table-custom td:nth-child(6),
+.table-custom td:nth-child(7) {
+  white-space: nowrap;
+}
+
+/* OPERASI column: smallest possible */
+.table-custom td:last-child,
+.table-custom th:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+.table-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .nama-barang-cell { max-width: 150px; }
+  .jastiper-cell { max-width: 90px; }
+  .prod-thumb { width: 44px; height: 44px; }
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .table-custom { table-layout: auto; }
+  .nama-barang-cell { max-width: 140px; }
+  .jastiper-cell { max-width: 90px; } /* lebih kecil lagi saat mobile */
+  .prod-thumb { width: 48px; height: 48px; }
+}
